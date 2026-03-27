@@ -77,34 +77,14 @@ const Logger = {
       logToMain("Error", "database");
     },
   },
-  generalLogger: {
+  authLogger: {
     logSuccess: function (message) {
-      createMyLogger("general").info(message);
-      logToMain("Success", "general");
+      createMyLogger("auth").info(message);
+      logToMain("Success", "auth");
     },
     logError: function (error) {
-      createMyLogger("general").error(`${error.message}\n${error.stack}`);
-      logToMain("Error", "general");
-    },
-  },
-  brokerLogger: {
-    logSuccess: function (message) {
-      createMyLogger("broker").info(message);
-      logToMain("Success", "broker");
-    },
-    logError: function (error) {
-      createMyLogger("broker").error(`${error.message}\n${error.stack}`);
-      logToMain("Error", "broker");
-    },
-  },
-  stripeWebhook: {
-    logSuccess: function (message) {
-      createMyLogger("stripeWebhook").info(message);
-      logToMain("Success", "stripeWebhook");
-    },
-    logError: function (error) {
-      createMyLogger("stripeWebhook").error(`${error.message}\n${error.stack}`);
-      logToMain("Error", "stripeWebhook");
+      createMyLogger("auth").error(`${error.message}\n${error.stack}`);
+      logToMain("Error", "auth");
     },
   },
 };

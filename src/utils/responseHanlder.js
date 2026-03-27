@@ -2,10 +2,10 @@ import { ServerResponse } from "#constants";
 import { Logger } from "#utils";
 
 class ResponseHandler {
-  static successHandler = (res, data) => {
+  static successHandler = (res, data, message) => {
     res.status(ServerResponse.API_STATUS_CODE.SUCCESS).json({
       status: ServerResponse.API_STATUS_CODE.SUCCESS,
-      message: ServerResponse.API_RESPONSE_MESSAGE.SUCCESS,
+      message: message || ServerResponse.API_RESPONSE_MESSAGE.SUCCESS,
       data: data ? data : "",
     });
   };
@@ -38,17 +38,22 @@ class ResponseHandler {
       data: data ? data : "",
     });
   };
-  static tooManyRequests(
+  static authHandler(
     res,
-    data = null,
-    message = ServerResponse.API_RESPONSE_MESSAGE.RATE_LIMIT,
+    message = ServerResponse.API_RESPONSE_MESSAGE.AUTHORIZATION_FAILED,
+    status = ServerResponse.API_STATUS_CODE.AUTHORIZATION_FAILED,
   ) {
+    const error = new Error(message);
+    error.status = status;
+
+    Logger.authLogger.logError(error);
     return res
-      .status(ServerResponse.API_STATUS_CODE.RATE_LIMIT)
+      .status(
+        status || ServerResponse.API_RESPONSE_MESSAGE.AUTHORIZATION_FAILED,
+      )
       .json({
-        status: ServerResponse.API_STATUS_CODE.RATE_LIMIT,
-        message,
-        data,
+        status: status,
+        message: message,
       });
   }
 }

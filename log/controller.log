@@ -1,0 +1,102 @@
+27-3-2026 09:35:19 PM error: bcrypt is not defined
+ReferenceError: bcrypt is not defined
+    at model.<anonymous> (file:///C:/code/Backend/GENAI/src/models/user.model.js:25:25)
+    at Kareem.execPre (C:\code\Backend\GENAI\node_modules\kareem\index.js:68:39)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async model.$__save (C:\code\Backend\GENAI\node_modules\mongoose\lib\model.js:376:5)
+    at async model.save (C:\code\Backend\GENAI\node_modules\mongoose\lib\model.js:642:5)
+    at async C:\code\Backend\GENAI\node_modules\mongoose\lib\model.js:2778:9
+    at async Promise.all (index 0)
+    at async Function.create (C:\code\Backend\GENAI\node_modules\mongoose\lib\model.js:2763:11)
+    at async AuthRepository.CreateUser (file:///C:/code/Backend/GENAI/src/app/repository/auth.repository.js:11:12)
+    at async AuthService.registerUser (file:///C:/code/Backend/GENAI/src/app/services/auth.service.js:24:18)
+27-3-2026 09:35:57 PM error: jwt is not defined
+ReferenceError: jwt is not defined
+    at userSchema.methods.generateToken (file:///C:/code/Backend/GENAI/src/models/user.model.js:34:3)
+    at AuthService.registerUser (file:///C:/code/Backend/GENAI/src/app/services/auth.service.js:26:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async registerUser (file:///C:/code/Backend/GENAI/src/controllers/auth.controller.js:15:31)
+27-3-2026 09:36:38 PM error: Account already exists with this email address or username
+Error: Account already exists with this email address or username
+    at AuthService.registerUser (file:///C:/code/Backend/GENAI/src/app/services/auth.service.js:17:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async registerUser (file:///C:/code/Backend/GENAI/src/controllers/auth.controller.js:15:31)
+27-3-2026 09:36:47 PM error: secretOrPrivateKey must have a value
+Error: secretOrPrivateKey must have a value
+    at module.exports [as sign] (C:\code\Backend\GENAI\node_modules\jsonwebtoken\sign.js:111:20)
+    at userSchema.methods.generateToken (file:///C:/code/Backend/GENAI/src/models/user.model.js:35:14)
+    at AuthService.registerUser (file:///C:/code/Backend/GENAI/src/app/services/auth.service.js:26:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async registerUser (file:///C:/code/Backend/GENAI/src/controllers/auth.controller.js:15:31)
+27-3-2026 09:43:01 PM error: Invalid email or password
+Error: Invalid email or password
+    at AuthService.loginUser (file:///C:/code/Backend/GENAI/src/app/services/auth.service.js:35:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async loginUser (file:///C:/code/Backend/GENAI/src/controllers/auth.controller.js:52:31)
+27-3-2026 09:43:29 PM error: Invalid email or password
+Error: Invalid email or password
+    at AuthService.loginUser (file:///C:/code/Backend/GENAI/src/app/services/auth.service.js:35:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async loginUser (file:///C:/code/Backend/GENAI/src/controllers/auth.controller.js:52:31)
+27-3-2026 09:43:41 PM error: Invalid email or password
+Error: Invalid email or password
+    at AuthService.loginUser (file:///C:/code/Backend/GENAI/src/app/services/auth.service.js:35:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async loginUser (file:///C:/code/Backend/GENAI/src/controllers/auth.controller.js:52:31)
+27-3-2026 09:46:53 PM error: Account already exists with this email address or username
+Error: Account already exists with this email address or username
+    at AuthService.registerUser (file:///C:/code/Backend/GENAI/src/app/services/auth.service.js:17:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async registerUser (file:///C:/code/Backend/GENAI/src/controllers/auth.controller.js:15:31)
+27-3-2026 10:13:35 PM error: Cannot read properties of undefined (reading 'token')
+TypeError: Cannot read properties of undefined (reading 'token')
+    at logoutUser (file:///C:/code/Backend/GENAI/src/controllers/auth.controller.js:78:21)
+    at Layer.handleRequest (C:\code\Backend\GENAI\node_modules\router\lib\layer.js:152:17)
+    at next (C:\code\Backend\GENAI\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\code\Backend\GENAI\node_modules\router\lib\route.js:117:3)
+    at handle (C:\code\Backend\GENAI\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\code\Backend\GENAI\node_modules\router\lib\layer.js:152:17)
+    at C:\code\Backend\GENAI\node_modules\router\index.js:295:15
+    at processParams (C:\code\Backend\GENAI\node_modules\router\index.js:582:12)
+    at next (C:\code\Backend\GENAI\node_modules\router\index.js:291:5)
+    at Function.handle (C:\code\Backend\GENAI\node_modules\router\index.js:186:3)
+27-3-2026 10:15:01 PM error: User already logged out
+Error: User already logged out
+    at AuthService.logoutUser (file:///C:/code/Backend/GENAI/src/app/services/auth.service.js:55:21)
+    at logoutUser (file:///C:/code/Backend/GENAI/src/controllers/auth.controller.js:80:50)
+    at Layer.handleRequest (C:\code\Backend\GENAI\node_modules\router\lib\layer.js:152:17)
+    at next (C:\code\Backend\GENAI\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\code\Backend\GENAI\node_modules\router\lib\route.js:117:3)
+    at handle (C:\code\Backend\GENAI\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\code\Backend\GENAI\node_modules\router\lib\layer.js:152:17)
+    at C:\code\Backend\GENAI\node_modules\router\index.js:295:15
+    at processParams (C:\code\Backend\GENAI\node_modules\router\index.js:582:12)
+    at next (C:\code\Backend\GENAI\node_modules\router\index.js:291:5)
+27-3-2026 10:15:44 PM error: Cannot read properties of undefined (reading 'token')
+TypeError: Cannot read properties of undefined (reading 'token')
+    at logoutUser (file:///C:/code/Backend/GENAI/src/controllers/auth.controller.js:78:21)
+    at Layer.handleRequest (C:\code\Backend\GENAI\node_modules\router\lib\layer.js:152:17)
+    at next (C:\code\Backend\GENAI\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\code\Backend\GENAI\node_modules\router\lib\route.js:117:3)
+    at handle (C:\code\Backend\GENAI\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\code\Backend\GENAI\node_modules\router\lib\layer.js:152:17)
+    at C:\code\Backend\GENAI\node_modules\router\index.js:295:15
+    at processParams (C:\code\Backend\GENAI\node_modules\router\index.js:582:12)
+    at next (C:\code\Backend\GENAI\node_modules\router\index.js:291:5)
+    at Function.handle (C:\code\Backend\GENAI\node_modules\router\index.js:186:3)
+27-3-2026 10:44:55 PM error: Cannot read properties of null (reading '_id')
+TypeError: Cannot read properties of null (reading '_id')
+    at getMeController (file:///C:/code/Backend/GENAI/src/controllers/auth.controller.js:101:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+27-3-2026 10:45:50 PM error: Cannot read properties of null (reading '_id')
+TypeError: Cannot read properties of null (reading '_id')
+    at getMeController (file:///C:/code/Backend/GENAI/src/controllers/auth.controller.js:103:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+27-3-2026 10:47:10 PM error: Cannot read properties of null (reading '_id')
+TypeError: Cannot read properties of null (reading '_id')
+    at getMeController (file:///C:/code/Backend/GENAI/src/controllers/auth.controller.js:105:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+27-3-2026 10:48:10 PM error: Cannot read properties of null (reading '_id')
+TypeError: Cannot read properties of null (reading '_id')
+    at getMeController (file:///C:/code/Backend/GENAI/src/controllers/auth.controller.js:105:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
