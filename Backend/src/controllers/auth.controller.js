@@ -27,9 +27,11 @@ class AuthController {
 
       const responseData = {
         message: "User registered successfully",
-        _id: user._id,
-        email: user.email,
-        username: user.username,
+        user: {
+          _id: user._id,
+          email: user.email,
+          username: user.username,
+        },
         token: token,
       };
 
@@ -60,9 +62,11 @@ class AuthController {
 
       const responseData = {
         message: "User loggedIn successfully.",
-        _id: user._id,
-        email: user.email,
-        username: user.username,
+        user: {
+          _id: user._id,
+          email: user.email,
+          username: user.username,
+        },
         token: token,
       };
 
@@ -95,12 +99,14 @@ class AuthController {
     try {
       const UserId = req.user._id;
 
-      const user = await AuthService.getMeService(UserId);
+      const userData = await AuthService.getMeService(UserId);
 
       const responseData = {
-        id: user._id,
-        username: user.username,
-        email: user.email,
+        user: {
+          id: userData._id,
+          username: userData.username,
+          email: userData.email,
+        },
       };
 
       ResponseHandler.successHandler(
