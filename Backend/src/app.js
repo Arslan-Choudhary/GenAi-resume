@@ -3,6 +3,9 @@ import ENV from "#env";
 import { connectDB } from "#connections";
 import { Logger } from "#utils";
 
+// import invokeGeminiAi from "./utils/ai.service.js";
+// invokeGeminiAi()
+
 import "#syncRoutes";
 import "#models";
 

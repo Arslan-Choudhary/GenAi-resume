@@ -14,6 +14,7 @@ const ENV = {
   CORS: env.CORS_ORIGIN,
   JWT_SECRET: env.JWT_SECRET,
   expiresIn: env.expiresIn,
+  GOOGLE_GENAI_API_KEY: env.GOOGLE_GENAI_API_KEY
 };
 
 export default ENV;
