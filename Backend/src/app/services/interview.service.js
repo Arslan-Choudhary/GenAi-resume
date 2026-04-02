@@ -30,6 +30,34 @@ class InterviewService {
 
     return interviewReport;
   }
+
+  static async getInterviewReportById(interviewId, userId) {
+    const interviewReport = await InterviewRepository.GetReport(
+      interviewId,
+      userId,
+    );
+
+    if (!interviewReport) {
+      const error = "Interview report not found";
+      error.status = 404;
+      throw error;
+    }
+
+    return interviewReport;
+  }
+
+  static async getAllInterviewReports(userId) {
+    const allInterviewReports =
+      await InterviewRepository.GetAllInterviewReports(userId);
+
+    if (!allInterviewReports) {
+      const error = "Interview reports not found";
+      error.status = 404;
+      throw error;
+    }
+
+    return allInterviewReports;
+  }
 }
 
 export default InterviewService;

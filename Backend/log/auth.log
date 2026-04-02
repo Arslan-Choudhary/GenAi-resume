@@ -436,3 +436,18 @@ Error: Invalid token
     at ResponseHandler.authHandler (file:///C:/code/Backend/GENAI/Backend/src/utils/responseHanlder.js:46:19)
     at authUser (file:///C:/code/Backend/GENAI/Backend/src/middlewares/auth.middleware.js:26:21)
     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+02-4-2026 10:43:47 PM error: Invalid token
+Error: Invalid token
+    at ResponseHandler.authHandler (file:///C:/code/Backend/GENAI/Backend/src/utils/responseHanlder.js:46:19)
+    at authUser (file:///C:/code/Backend/GENAI/Backend/src/middlewares/auth.middleware.js:26:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+02-4-2026 10:43:48 PM error: Invalid token
+Error: Invalid token
+    at ResponseHandler.authHandler (file:///C:/code/Backend/GENAI/Backend/src/utils/responseHanlder.js:46:19)
+    at authUser (file:///C:/code/Backend/GENAI/Backend/src/middlewares/auth.middleware.js:26:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+02-4-2026 10:43:49 PM error: Invalid token
+Error: Invalid token
+    at ResponseHandler.authHandler (file:///C:/code/Backend/GENAI/Backend/src/utils/responseHanlder.js:46:19)
+    at authUser (file:///C:/code/Backend/GENAI/Backend/src/middlewares/auth.middleware.js:26:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)

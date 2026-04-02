@@ -17,4 +17,22 @@ interviewRouter
     InterviewController.generateInterviewReport,
   );
 
+/**
+ * @route GET /api/interview/report/:interviewId
+ * @description get interview report by interviewId.
+ * @access private
+ */
+interviewRouter
+  .route("/report/:interviewId")
+  .get(authUser, InterviewController.getInterviewReportById);
+
+/**
+ * @route GET /api/interview/
+ * @description get all interview reports of logged in user.
+ * @access private
+ */
+interviewRouter
+  .route("/")
+  .get(authUser, InterviewController.getAllInterviewReports);
+
 export default interviewRouter;

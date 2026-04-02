@@ -3,25 +3,78 @@ import { InterviewService } from "#service";
 import { ResponseHandler } from "#utils";
 
 class InterviewController {
+  /**
+   * @description Controller to generate interview report based on user self description, resume and job description.
+   */
   static async generateInterviewReport(req, res) {
-    const userId = req.user.id;
-    const resumeContent = await new PDFParse(
-      Uint8Array.from(req.file.buffer),
-    ).getText();
-    const { selfDescription, jobDescription } = req.body;
+    try {
+      // console.log("request:", req);
+      const userId = req.user._id;
+      console.log("userId: ", userId);
+      const resumeContent = await new PDFParse(
+        Uint8Array.from(req.file.buffer),
+      ).getText();
 
-    const interviewReport = await InterviewService.generateInterviewReport(
-      resumeContent,
-      selfDescription,
-      jobDescription,
-      userId,
-    );
+      const { selfDescription, jobDescription } = req.body;
 
-    ResponseHandler.createHandler(
-      res,
-      interviewReport,
-      "Interview report generated successfully",
-    );
+      const interviewReport = await InterviewService.generateInterviewReport(
+        resumeContent,
+        selfDescription,
+        jobDescription,
+        userId,
+      );
+
+      ResponseHandler.createHandler(
+        res,
+        interviewReport,
+        "Interview report generated successfully",
+      );
+    } catch (error) {
+      ResponseHandler.errorHandler(res, error);
+    }
+  }
+
+  /**
+   * @description Controller to get interview report by interviewId.
+   */
+  static async getInterviewReportById(req, res) {
+    try {
+      const { interviewId } = req.params;
+      const userId = req.user._id;
+
+      const interviewReport = await InterviewService.getInterviewReportById(
+        interviewId,
+        userId,
+      );
+
+      ResponseHandler.successHandler(
+        res,
+        interviewReport,
+        "Interview report fetched successfully",
+      );
+    } catch (error) {
+      ResponseHandler.errorHandler(res, error);
+    }
+  }
+
+  /**
+   * @description Controller to get all interview reports of logged in user.
+   */
+  static async getAllInterviewReports(req, res) {
+    try {
+      const userId = req.user._id;
+
+      const allInterviewReports =
+        await InterviewService.getAllInterviewReports(userId);
+
+      ResponseHandler.successHandler(
+        res,
+        allInterviewReports,
+        "Interview reports fetched successfully.",
+      );
+    } catch (error) {
+      ResponseHandler.errorHandler(res, error);
+    }
   }
 }
 
