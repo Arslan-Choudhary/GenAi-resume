@@ -1,5 +1,5 @@
 import { InterviewRepository } from "#repository";
-import { generateInterviewReport } from "#utils";
+import { generateInterviewReport, normalizeInterviewReport } from "#utils";
 
 class InterviewService {
   static async generateInterviewReport(
@@ -16,12 +16,16 @@ class InterviewService {
 
     console.log("interViewReportByAi: ", interViewReportByAi);
 
+    const normalizedReport = normalizeInterviewReport(interViewReportByAi);
+
+    console.log("NORMALIZED 👉", normalizedReport);
+
     const interviewReport = await InterviewRepository.CreateReport({
       user: userId,
       resume: resumeContent.text,
       selfDescription,
       jobDescription,
-      ...interViewReportByAi,
+      ...normalizedReport,
     });
 
     return interviewReport;

@@ -103,12 +103,15 @@ async function generateInterviewReport({
   jobDescription,
 }) {
   const prompt = `
+
+  Important: Do NOT wrap objects in quotes. Do not stringify. Return arrays of objects, not JSON strings.
+  
 You are a strict JSON generator.
 
 Return ONLY valid JSON.
-Do NOT include explanations.
-Do NOT include text outside JSON.
+Do NOT include explanations, comments, or any text outside JSON.
 Do NOT flatten objects.
+Do NOT return null or empty arrays.
 
 STRICT STRUCTURE:
 
@@ -145,14 +148,14 @@ STRICT STRUCTURE:
 }
 
 RULES:
-- Do NOT return arrays of strings
-- Do NOT return keys like "question", "intention" as separate items
-- Every array must contain OBJECTS
-- Minimum:
+- Every array must contain OBJECTS, not strings.
+- Minimum required:
   - 5 technicalQuestions
   - 3 behavioralQuestions
   - 3 skillGaps
   - 5 preparationPlan
+- All numeric fields must be numbers (e.g., "day").
+- Every field must be populated; do not leave empty strings.
 
 Candidate:
 Resume: ${resume}
@@ -161,7 +164,8 @@ Job Description: ${jobDescription}
 `;
 
   const response = await ai.models.generateContent({
-    model: "gemini-3-flash-preview",
+    // model: "gemini-3-flash-preview",
+    model: "gemini-2.5-flash",
     contents: prompt,
     config: {
       responseMimeType: "application/json",
