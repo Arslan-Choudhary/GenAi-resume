@@ -20,6 +20,10 @@ class InterviewRepository {
         "-resume -selfDescription -jobDescription -__v -technicalQuestions -behavioralQuestions -skillGaps -preparationPlan",
       );
   }
+
+  static async GenerateResumePdf(interviewReportId) {
+    return await interviewReportModel.findById(interviewReportId);
+  }
 }
 
 export default InterviewRepository;

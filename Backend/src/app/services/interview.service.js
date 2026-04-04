@@ -1,5 +1,9 @@
 import { InterviewRepository } from "#repository";
-import { generateInterviewReport, normalizeInterviewReport } from "#utils";
+import {
+  generateInterviewReport,
+  normalizeInterviewReport,
+  generateResumePdf,
+} from "#utils";
 
 class InterviewService {
   static async generateInterviewReport(
@@ -57,6 +61,19 @@ class InterviewService {
     }
 
     return allInterviewReports;
+  }
+
+  static async generateResumePdf(interviewReportId) {
+    const interviewReport =
+      await InterviewRepository.GenerateResumePdf(interviewReportId);
+
+    if (!interviewReport) {
+      const error = new Error("Interview report not found.");
+      error.status = 404;
+      throw error;
+    }
+
+    return interviewReport;
   }
 }
 

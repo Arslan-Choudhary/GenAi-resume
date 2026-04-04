@@ -1,6 +1,6 @@
 import { PDFParse } from "pdf-parse";
 import { InterviewService } from "#service";
-import { ResponseHandler } from "#utils";
+import { ResponseHandler, generateResumePdf } from "#utils";
 
 class InterviewController {
   /**
@@ -75,6 +75,31 @@ class InterviewController {
     } catch (error) {
       ResponseHandler.errorHandler(res, error);
     }
+  }
+
+  /**
+   * @description Controller to generate resume PDF based on user self description, resume and job description.
+   */
+  static async generateResumePdf(req, res) {
+    const { interviewReportId } = req.params;
+
+    const interviewReport =
+      await InterviewService.generateResumePdf(interviewReportId);
+
+    const { resume, jobDescription, selfDescription } = interviewReport;
+
+    const pdfBuffer = await generateResumePdf({
+      resume,
+      jobDescription,
+      selfDescription,
+    });
+
+    res.set({
+      "Content-Type": "application/pdf",
+      "Content-Disposition": `attachment; filename=resume_${interviewReportId}.pdf`,
+    });
+
+    res.send(pdfBuffer);
   }
 }
 
