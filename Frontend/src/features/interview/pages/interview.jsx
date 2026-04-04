@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../style/interview.scss";
-// import { useInterview } from "../hooks/useInterview.js";
-// import { useNavigate, useParams } from "react-router";
+import { useInterview } from "../hooks/useInterview.js";
+import { useParams } from "react-router";
 
 const NAV_ITEMS = [
   {
@@ -130,29 +130,29 @@ const RoadMapDay = ({ day }) => (
 // ── Main Component ────────────────────────────────────────────────────────────
 const Interview = () => {
   const [activeNav, setActiveNav] = useState("technical");
-//   const { report, getReportById, loading, getResumePdf } = useInterview();
-//   const { interviewId } = useParams();
+  const { report, getReportById, loading, getResumePdf } = useInterview();
+  const { interviewId } = useParams();
 
-//   useEffect(() => {
-    // if (interviewId) {
-    //   getReportById(interviewId);
-    // }
-//   }, [interviewId]);
+  useEffect(() => {
+    if (interviewId) {
+      getReportById(interviewId);
+    }
+  }, [interviewId]);
 
-//   if (loading || !report) {
-//     return (
-//       <main className="loading-screen">
-//         <h1>Loading your interview plan...</h1>
-//       </main>
-//     );
-//   }
+  if (loading || !report) {
+    return (
+      <main className="loading-screen">
+        <h1>Loading your interview plan...</h1>
+      </main>
+    );
+  }
 
-//   const scoreColor =
-//     report.matchScore >= 80
-//       ? "score--high"
-//       : report.matchScore >= 60
-//         ? "score--mid"
-//         : "score--low";
+  const scoreColor =
+    report.matchScore >= 80
+      ? "score--high"
+      : report.matchScore >= 60
+        ? "score--mid"
+        : "score--low";
 
   return (
     <div className="interview-page">
@@ -173,9 +173,9 @@ const Interview = () => {
             ))}
           </div>
           <button
-            // onClick={() => {
-            //   getResumePdf(interviewId);
-            // }}
+            onClick={() => {
+              getResumePdf(interviewId);
+            }}
             className="button primary-button"
           >
             <svg
@@ -200,13 +200,13 @@ const Interview = () => {
               <div className="content-header">
                 <h2>Technical Questions</h2>
                 <span className="content-header__count">
-                  {/* {report.technicalQuestions.length} questions */}
+                  {report.technicalQuestions.length} questions
                 </span>
               </div>
               <div className="q-list">
-                {/* {report.technicalQuestions.map((q, i) => (
+                {report.technicalQuestions.map((q, i) => (
                   <QuestionCard key={i} item={q} index={i} />
-                ))} */}
+                ))}
               </div>
             </section>
           )}
@@ -216,13 +216,13 @@ const Interview = () => {
               <div className="content-header">
                 <h2>Behavioral Questions</h2>
                 <span className="content-header__count">
-                  {/* {report.behavioralQuestions.length} questions */}
+                  {report.behavioralQuestions.length} questions
                 </span>
               </div>
               <div className="q-list">
-                {/* {report.behavioralQuestions.map((q, i) => (
+                {report.behavioralQuestions.map((q, i) => (
                   <QuestionCard key={i} item={q} index={i} />
-                ))} */}
+                ))}
               </div>
             </section>
           )}
@@ -232,13 +232,13 @@ const Interview = () => {
               <div className="content-header">
                 <h2>Preparation Road Map</h2>
                 <span className="content-header__count">
-                  {/* {report.preparationPlan.length}-day plan */}
+                  {report.preparationPlan.length}-day plan
                 </span>
               </div>
               <div className="roadmap-list">
-                {/* {report.preparationPlan.map((day) => (
+                {report.preparationPlan.map((day) => (
                   <RoadMapDay key={day.day} day={day} />
-                ))} */}
+                ))}
               </div>
             </section>
           )}
@@ -251,10 +251,10 @@ const Interview = () => {
           {/* Match Score */}
           <div className="match-score">
             <p className="match-score__label">Match Score</p>
-            {/* <div className={`match-score__ring ${scoreColor}`}> */}
-              {/* <span className="match-score__value">{report.matchScore}</span> */}
-              {/* <span className="match-score__pct">%</span> */}
-            {/* </div> */}
+            <div className={`match-score__ring ${scoreColor}`}>
+              <span className="match-score__value">{report.matchScore}</span>
+              <span className="match-score__pct">%</span>
+            </div>
             <p className="match-score__sub">Strong match for this role</p>
           </div>
 
@@ -264,14 +264,14 @@ const Interview = () => {
           <div className="skill-gaps">
             <p className="skill-gaps__label">Skill Gaps</p>
             <div className="skill-gaps__list">
-              {/* {report.skillGaps.map((gap, i) => (
+              {report.skillGaps.map((gap, i) => (
                 <span
                   key={i}
                   className={`skill-tag skill-tag--${gap.severity}`}
                 >
                   {gap.skill}
                 </span>
-              ))} */}
+              ))}
             </div>
           </div>
         </aside>
