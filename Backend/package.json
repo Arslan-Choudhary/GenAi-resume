@@ -45,5 +45,8 @@
     "#controllers": "./src/exports/controllers.js",
     "#service": "./src/exports/service.js",
     "#repository": "./src/exports/repository.js"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1"
   }
 }
